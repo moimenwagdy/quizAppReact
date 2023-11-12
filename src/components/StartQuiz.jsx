@@ -10,7 +10,7 @@ let StartQuiz = forwardRef(({ startQuiz }, ref) => {
   return (
     <dialog ref={modalRef}>
       <div className="Start-quiz">
-        <h3>Challenge Introdution</h3>
+        <h3>Challenge Introduction</h3>
         <p>The challenge is designed to help learners use their informations</p>
       </div>
 
