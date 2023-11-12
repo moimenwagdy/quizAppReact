@@ -1,10 +1,26 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import QUESTIONS from "../questions";
 import Summary from "./Summary";
 import QuizContainer from "./quizContainer";
+import StartQuiz from "./StartQuiz";
 
 export default function Quiz() {
   let [answers, setAnswers] = useState([]);
+  let [isShown, setIsShown] = useState(true);
+
+  let startQuizRef = useRef();
+
+  function startQuiz() {
+    setTimeout(() => {
+      setIsShown(false);
+    }, 1500);
+  }
+
+  useEffect(() => {
+    if (isShown) {
+      startQuizRef.current.open();
+    }
+  }, []);
 
   let activeQuestion = answers.length;
 
@@ -22,13 +38,17 @@ export default function Quiz() {
 
   return (
     <>
-      <QuizContainer
-        key={activeQuestion}
-        selectedAnswer={answers[answers.length - 1]}
-        onSelect={answerHandler}
-        activeQuestion={activeQuestion}
-        onTimeEnd={nullEntry}
-      />
+      {isShown ? (
+        <StartQuiz startQuiz={startQuiz} ref={startQuizRef} />
+      ) : (
+        <QuizContainer
+          key={activeQuestion}
+          selectedAnswer={answers[answers.length - 1]}
+          onSelect={answerHandler}
+          activeQuestion={activeQuestion}
+          onTimeEnd={nullEntry}
+        />
+      )}
     </>
   );
 }

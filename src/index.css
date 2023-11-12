@@ -334,3 +334,24 @@ header h1 {
     transform: translateY(0);
   }
 }
+dialog {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+}
+dialog .startButton {
+  background: transparent;
+  color: white;
+  padding: 5px 25px;
+  font-weight: bold;
+  cursor: pointer;
+  
+}
+
+dialog .startButton:hover {
+  background-color: transparent;
+}
+
+dialog .startButton:focus-visible {
+  outline: none;
+}
