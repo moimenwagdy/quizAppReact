@@ -8,7 +8,7 @@ export default function QuizContainer({ onSelect, activeQuestion, onTimeEnd }) {
     isCorrect: null,
   });
 
-  let timer = 5000;
+  let timer = 15000;
   if (answerstatus.selectedAnswer) {
     timer = 1000;
   }
